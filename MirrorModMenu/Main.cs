@@ -91,7 +91,7 @@ namespace MirrorModMenu
                     GameTool.SetAchievement("wancheng_" + baseData.id + "_2");
                 }
                 
-                modEntry.Logger.Log("Finished adding Achievements!");
+                modEntry.Logger.Log("Finished adding Achievements! :>");
                 
             }
         }
