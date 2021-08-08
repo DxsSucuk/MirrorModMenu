@@ -88,7 +88,9 @@ namespace MirrorModMenu
                 foreach (BaseData baseData in GameTool.roleData.dataList)
                 {
                     GameTool.SetAchievement("jieju_" + baseData.id + "_1");
-                    GameTool.SetAchievement("wancheng_" + baseData.id + "_2");
+                    GameTool.SetAchievement("jieju_" + baseData.id + "_2");
+                    GameTool.SetAchievement("wancheng_" + baseData.id);
+                    GameTool.SetAchievement("Kill_25_" + baseData.id);
                 }
                 
                 modEntry.Logger.Log("Finished adding Achievements! :>");
