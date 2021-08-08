@@ -84,13 +84,32 @@ namespace MirrorModMenu
                 GameTool.SetAchievement("cure_4");
                 GameTool.SetAchievement("rage_2");
                 GameTool.SetAchievement("rage_4");
+                GameTool.SetAchievement("Abyss_8");
+                GameTool.SetAchievement("Abyss_12");
+                GameTool.SetAchievement("Damage_1200");
+                GameTool.SetAchievement("Damage_2400");
+                GameTool.SetAchievement("MaxRage_100");
+                GameTool.SetAchievement("MaxRage_200");
+                GameTool.SetAchievement("Dispel_7");
+                GameTool.SetAchievement("Dispel_12");
+                GameTool.SetAchievement("Combo_7");
+                GameTool.SetAchievement("Combo_11");
+                GameTool.SetAchievement("SuperStar_2");
+                GameTool.SetAchievement("SuperStar_4");
+                GameTool.SetAchievement("LevelUp_2_6");
+                GameTool.SetAchievement("LevelUp_2_12");
+                GameTool.SetAchievement("LevelUp_3_6");
+                GameTool.SetAchievement("LevelUp_3_12");
                 
                 foreach (BaseData baseData in GameTool.roleData.dataList)
                 {
                     GameTool.SetAchievement("jieju_" + baseData.id + "_1");
                     GameTool.SetAchievement("jieju_" + baseData.id + "_2");
+                    GameTool.SetAchievement("tiaojiao_" + baseData.id + "_1");
+                    GameTool.SetAchievement("tiaojiao_" + baseData.id + "_2");
                     GameTool.SetAchievement("wancheng_" + baseData.id);
                     GameTool.SetAchievement("Kill_25_" + baseData.id);
+                    GameTool.SetAchievement("poyi_" + baseData.id);
                 }
                 
                 modEntry.Logger.Log("Finished adding Achievements! :>");
