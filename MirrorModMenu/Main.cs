@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using Lv1;
 using UnityEngine;
 using UnityModManagerNet;
 
@@ -7,22 +8,35 @@ namespace MirrorModMenu
 {
     public class Main
     {
+        /*
+         * This function will load the Mod into the Unity Mod Manager. 
+         */
         static bool Load(UnityModManager.ModEntry modEntry)
         {
             modEntry.Logger.Log("Injected Mod Menu.");
             modEntry.OnGUI = OnGUI;
             return true;
         }
+        
+        /*
+         * This function will initialize all gui elements for the Unity Mod Manager Menu
+         */
         static void OnGUI(UnityModManager.ModEntry modEntry)
         {
             GUILayout.Label("Cheat Menu");
 
+            /*
+             * Adds 1000 to the money variable.
+            */
             if (GUILayout.Button("Give 1k"))
             {
                 GameTool.roleData.Money += 1000;
                 GameTool.Save();
             }
             
+            /*
+             * Adds 1000 to the player's health variable.
+            */
             if (GUILayout.Button("Heal 1k"))
             {
                 try
@@ -35,6 +49,41 @@ namespace MirrorModMenu
                 }
             }
             
+            /*
+             * boobas good, boobash best!
+             * boobas hake
+            */
+            if (GUILayout.Button("Break enemy clothes"))
+            {
+                try
+                {
+                    var strArray1 = StarBox.Instance.Enemy.TemplateData.BrokeClothRule.Split(',');
+                    var num1 = strArray1.Length;
+                    var num2 = int.Parse(strArray1[strArray1.Length-1].Split(':')[4]);
+                    new Message(ConstantData.EVENT_TRIGGER_BROKE_CLOTH, StarBox.Instance)
+                    {
+                        {
+                            "level",
+                            num1
+                        },
+                        {
+                            "buffId",
+                            num2
+                        }
+                    }.Send();
+                }
+                catch (Exception ex)
+                {
+                    modEntry.Logger.LogException(ex);
+                    modEntry.Logger.Log(ex.HelpLink);
+                    modEntry.Logger.Log(ex.StackTrace);
+                    modEntry.Logger.Log(ex.Message);
+                }
+            }
+            
+            /*
+             * Sets the enemy's health to 1 so that you can one hit it.
+            */
             if (GUILayout.Button("Try to kill enemy"))
             {
                 try
@@ -47,6 +96,10 @@ namespace MirrorModMenu
                 }
             }
             
+            /*
+             * Sets the Turns variable to 0.
+             * Reflection was used since the Turns var is private.
+            */
             if (GUILayout.Button("Reset turns"))
             {
                 try
@@ -66,6 +119,9 @@ namespace MirrorModMenu
                 }
             }
 
+            /*
+             * Will unlock every achievement in the game so that you can have 100% in steam.
+            */
             if (GUILayout.Button("Unlock all Achievements"))
             {
                 GameTool.SetAchievement("skill_10");
